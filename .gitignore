@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+ui/node_modules/
+ui/build/
+*.sqlite
+*.log

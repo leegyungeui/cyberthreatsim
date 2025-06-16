@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///db.sqlite
+      - CORS_ORIGIN=${CORS_ORIGIN:-http://localhost:8000}
+      - DOMAIN=${DOMAIN:-localhost}
+      - JWT_SECRET=${JWT_SECRET:-your-32-char-secret-here-1234567890}
+    volumes:
+      - ./db.sqlite:/app/db.sqlite
+  frontend:
+    build: ./ui
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
